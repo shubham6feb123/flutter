@@ -1,23 +1,37 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+    onPrimary: Colors.black87,
+    primary: Colors.grey[300],
+    minimumSize: const Size(88, 36),
+    padding: const EdgeInsets.symmetric(horizontal: 16),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2)),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("App Bar"),
+      appBar: AppBar(
+        title: const Text("App Bar"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          style: raisedButtonStyle,
+          onPressed: () {
+            Navigator.pushNamed(context, '/');
+          },
+          child: Text('Looks like a RaisedButton'),
         ),
-        body: Center(
-          child: Container(
-            child: Text("Flutter learning"),
-          ),
-        ),
-        drawer: Drawer(
-          backgroundColor: Colors.orange[700],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.orange[700],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -33,7 +47,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
         selectedItemColor: Colors.amber[800],
-       
-      ),);
+      ),
+    );
   }
 }
